@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-app": "react-scripts start",
     "start-api": "node app.js",
-    "start": "start npm run start-app && start npm run start-api",
+    "start": "npm run start-app && npm run start-api",
     "start-dev": "nodemon app.js"
   },
   "author": "abhimanyu singh rathore",
