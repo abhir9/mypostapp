@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm install --prefix client/ && node app.js | npm start --prefix client/",
+    "start-app": "react-scripts start",
+    "start-api": "node app.js",
+    "start": "start npm run start-app && start npm run start-api",
     "start-dev": "nodemon app.js"
   },
   "author": "abhimanyu singh rathore",
@@ -18,9 +20,17 @@
     "express": "^4.16.2",
     "express-session": "^1.15.6",
     "express-validator": "^5.0.0",
-    "mongoose": "^5.0.4"
+    "mongoose": "^5.0.4",
+    "axios": "^0.17.1",
+    "install": "^0.10.4",
+    "moment": "^2.20.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.1"
   },
   "devDependencies": {
     "nodemon": "^1.18.4"
-  }
+  },
+  "proxy": "http://localhost:8080"
 }

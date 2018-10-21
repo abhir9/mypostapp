@@ -9,7 +9,7 @@ const cors = require('cors');
 const app = express();
 const result = require('dotenv').config();
 //serve static files like js, css
-app.use('/static', express.static(__dirname + '/client/build/static'));
+app.use('/static', express.static(__dirname + '/build/static'));
 mongoose.connect('mongodb://' + process.env.MONGOURI, function (err, result) {
     if (err) {
         console.log(err);
@@ -18,12 +18,13 @@ mongoose.connect('mongodb://' + process.env.MONGOURI, function (err, result) {
     }
 });
 app.use(cors({
-    origin: ['http://localhost:3000'],
+    origin: ['*'],
     methods: ['GET', 'HEAD', 'POST', 'DELETE', 'PUT', 'PATCH', 'OPTIONS'],
     credentials: true
 }));
 app.use(session({
     secret: 'qwertyuiop1234567890',
+	resave:true,
     saveUninitialized: true,
     cookie: {
         maxAge: (60000 * 60),
@@ -43,6 +44,6 @@ process.on('unhandledRejection', (reason, p) => {
     process.exit(1);
 });
 app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
 })
 app.listen(process.env.PORT || 8080);
